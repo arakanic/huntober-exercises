@@ -1,5 +1,6 @@
 /*
-with the decoded string in challenge from day 2, replace any instances of any of the key characters in a given string with an empty space (' ')...
+with the decoded string in the challenge from day 2, replace all instances of the key characters in a given string with an empty space
+
 example key characters -> 'A','_','K','E','Y','!'
 
 'AyouEcould!thinkKthisAisYhard_toYreadKbeforeYreplacingEthe_keyYcharacters'
@@ -7,8 +8,8 @@ example key characters -> 'A','_','K','E','Y','!'
 ' you could think this is hard to read before replacing the key characters'
 */
 
-// 1. for each character in the array
-// 2. replace all instances of character in given string with a space
+// 1. for each character in the array of special characters
+// 2. replace all instances of special character in the given string with a space
 // 3. return new string
 
 const keys = ["S","p","a","c","e"]

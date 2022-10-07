@@ -30,13 +30,13 @@ function decodeNumbersLettersIn(str) {
     }
     return str.split("").map(c => {
             if (getKey(c) !== undefined) { 
-            return getKey(c)
+                return getKey(c)
             }
             else if (getVal(c) !== undefined) {
-            return getVal(c) 
+                return getVal(c) 
             }
             else {
-            return c
+                return c
             }
         }).join("")
 }
