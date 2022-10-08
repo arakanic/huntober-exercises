@@ -1,17 +1,4 @@
 /* DAY ONE */
-
-// This function will fix a string which has been encoded in a way where numbers are swapped out with letters that have similar shapes, and vice versa
-
-// It takes a string and returns the string decoded (or encoded?) such as here:
-// console.log(decodeNumbersLettersIn("PR0-T1P #hqB: 1T'5 N1C3 T0 5AY H3770.")) // -> "PRO-TIP #498: IT'S NICE TO SAY HELLO."
-
-/*
-Create dictionary mapping numbers to letters
-Create function to swap key (number) for value (letter)
-Create function to swap value (letter) for key (number)
-return the string by mapping each character to equivalent letter value if it exists as a number key, an equivalent number key if it exists as a letter value, or just the character itself if neither exists in dictionary
-(There must be a more efficient way of doing this...)
-*/
 function decodeNumbersLettersIn(str) {
     const swap = {
         "0": "O",
@@ -59,63 +46,42 @@ function decodeTampering(str) {
 }
 
 let decode = decodeTampering(tamperedString)
-// console.log(decode)
 
 /*
 "Split this string up on *lowercase* 'V'. The first character in each substring besides this first one is what you need to remember for tomorrow's task. vS.A-#IYbSEkiQS5Sn@tq!CcG;+:^myl%CJcWzU
 */
 
-let specialChars = decode.slice(decode.indexOf("v") + 1).split("v").map(sub => sub[0])
-// console.log(specialChars)
+const keys = decode.slice(decode.indexOf("v") + 1).split("v").map(sub => sub[0])
+
+console.log("day 2 key:", keys)
 
 /* DAY THREE */
 
 /*
 with the decoded string in the challenge from day 2, replace all instances of the key characters in a given string with an empty space
-
-example key characters -> 'A','_','K','E','Y','!'
-
-'AyouEcould!thinkKthisAisYhard_toYreadKbeforeYreplacingEthe_keyYcharacters' // -> ' you could think this is hard to read before replacing the key characters'
 */
-
-// 1. for each character in the array of special characters
-// 2. replace all instances of special character in the given string with a space
-// 3. return new string
-
-const keys = ["S","p","a","c","e"]
 
 function removeChars(str, arr = keys) {
   arr.forEach(c => str = str.replaceAll(c, " "))
   return str
 }
 
-// const exStr = 'AyouEcould!thinkKthisAisYhard_toYreadKbeforeYreplacingEthe_keyYcharacters'
-// const exArr = ['A','_','K','E','Y','!']
-
-// console.log(removeChars(exStr, exArr))
-
 /* DAY FOUR */
-
-// Given a string, this function returns a reversed sequence of the string
-
-// let exStr = "   The white space at the beginning of this string doesn't match the whitespace at the end. "
 
 function rev(str) {
   return str.split("")
     .reverse().join("")
 }
 
-// console.log(rev(exStr))
-
 // SECRET MESSAGE: Decode with the functions above (Calculator fix -> Use the Day 2 key to add spaces -> Reverse the string)
-let secret = "e!!Igv)t5lltBcvbdeDH3dVw!OOtI#Aa.ZMDu7WYpP^VVjDc4I50iv#ylhgmQfs"
-console.log("secret:", secret)
-let decodeDayOne = decodeNumbersLettersIn(secret)
-console.log("day 1 decoding:", decodeDayOne)
-let decodeDayTwo = removeChars(decodeDayOne, keys)
-console.log("day 2 decoding:", decodeDayTwo)
-let decodeDayThree = rev(decodeDayTwo)
-console.log("day 3 decoding:", decodeDayThree)
+// let secret = "e!!Igv)t5lltBcvbdeDH3dVw!OOtI#Aa.ZMDu7WYpP^VVjDc4I50iv#ylhgmQfs"
+// console.log("secret:", secret)
+// let decodeDayOne = decodeNumbersLettersIn(secret)
+// console.log("day 1 decoding:", decodeDayOne)
+// let decodeDayTwo = removeChars(decodeDayOne, keys)
+// console.log("day 2 decoding:", decodeDayTwo)
+// let decodeDayThree = rev(decodeDayTwo)
+// console.log("day 3 decoding:", decodeDayThree)
 
 /* DAY FIVE */
 let subs = "The Pawshank Redemption,Caturday Night Live,Only Meworders in the Building,I Love Mewcy, Mewsummer Meowders,The Golden Purrs, Purrlandia ,Meowpardy, Meowstery Science Theater: Purrthousand, Amewican Idol,Dog City,Doctor Mew , The Meowing Fed,Mew Peter,The Vicar of Dogley, Kittens,Meownton Abbey,Pets and the Kitty,Dogis and Bonehead,Pawlty Meowers ,The Meowpet Show,Barkos,The Catbert Purrport,The Pawffice,The Dogford Files, Battlestar Catlactica,Catlumbo,SpongeDog Squarepants,NYPD Mew ,Fluffy the Meowpire Purrer,The Inbemewners,Meowder She Wrote,Paw & Order,30 Dog, Pawvatar: The Last Meowbender,The Pawnight Show,Arrested Dogvelopment,Furiends,Mewie,Curb Your Dogthusiasm,Teenage Mewtant Ninja Turtles,Phineas and Purrb,Paw Trek, Paw Trek: The Next Mewination, Twin Mewks, *C*A*T*S*,DogTales, Game of Bones, House of the Meowgon,The Purrlight Zone,Breaking Bone,The Meowre,The Dogpranos,The Rings of Meower, The KIT Crowd,Strangepaw Things ,Catman: The Animeowted Series,Meowter Call Saul,Mewgerton ,Obark,Mewphoria,La Casa de Pawpel,Rick & Meowty,Amewican Purror Story, Mewcifer,PawndaVision,Dogxter,The Meowndalorian, Dog Lasso,Bark,Meowdern Pawmily , Meowtlander,Bone Mirror,Barks and Recreation,How to Get Away with Meowder,Boneland ,Meowther Ted,Mewtopia,Mewey,The Mewkie Meowse Doghouse,Mewster Rogers' Neighborhood"
@@ -174,7 +140,9 @@ let arrSubs = subs.split(",")
       }
   })
 
-// console.log(arrSubs, arrSubs.length)
+const keyNum = arrSubs.length
+
+console.log("day 5 key:", keyNum)
 
 /* DAY SIX */
 
@@ -193,3 +161,52 @@ function removeNth(str, n) {
   }  
 
 /* DAY SEVEN */
+// This function swaps each letter of the alphabet for its opposite. A letter's opposite is one that, if the alphabet were flipped Z-A, would be the same number of letters in, and which would also have the opposite case
+
+/*
+'A'  // first letter of the alphabet, uppercase
+'z'  // last letter of the alphabet, lowercase
+
+'p'  // 16th letter of the alphabet, lowercase
+'K'  // 16th letter from *end* of alphabet, uppercase
+*/
+
+// Example:
+// let example = 'vCZNKOV: 0 MFNYVI LI KFMXGFZGRLM XSZMTVH' // -> 'Example: 0 number or punctuation changes'
+
+function oppositify(str) {
+    const lowerAlpha = 'abcdefghijklmnopqrstuvwxyz'.split("")
+    const upperAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split("")
+    return str.split("").map((c, i) => {
+      if (lowerAlpha.includes(c)) {
+        let newIndex = 26 - (lowerAlpha.indexOf(c) + 1)
+        // console.log("lower:", c, newIndex)
+        return upperAlpha[newIndex]
+      }
+      else if (upperAlpha.includes(c)) {
+        let newIndex = 26 - (upperAlpha.indexOf(c) + 1)
+        // console.log("upper:", c, newIndex)
+        return lowerAlpha[newIndex]
+      }
+      else {
+        return c
+      }
+    }).join("")
+}
+
+const encryptedMsg = "e!!Igv)t5lltBcvbdeDH3dVw!OOtI#Aa.ZMDu7WYpP^VVjDc4I50iv#ylhgmQfs"
+
+const stepDayOne = decodeNumbersLettersIn(encryptedMsg)
+const stepDayThree = removeChars(stepDayOne, keys)
+const stepDayFour = rev(stepDayThree)
+const stepDaySix = removeNth(stepDayFour, keyNum - 1)
+const stepDaySeven = oppositify(stepDaySix)
+
+console.log("encryptedMsg", encryptedMsg)
+console.log("day 1:", stepDayOne)
+console.log("day 2:", keys)
+console.log("day 3", stepDayThree)
+console.log("day 4:", stepDayFour)
+console.log("day 5:", keyNum, "-> REVIEW DAY 5 because this only works when this is 3")
+console.log("day 6:", stepDaySix)
+console.log("day 7:", stepDaySeven)
