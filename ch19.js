@@ -1,4 +1,13 @@
-// Day 19: MORE BAD CODE BELOW
+// Day 19
+
+// Examples
+const dateA = new Date(2022,09,26)
+const dateB = new Date(2022,11,25)
+console.log(comp1(dateA, dateB))
+console.log(comp2(dateA, dateB))
+console.log(tot(dateA, dateB))
+
+// Code
 // 1. Extract helper functions for shared code
 // 2. Create guard classes
 // 3. Condense
@@ -41,11 +50,3 @@ function tot(a, b) {
     const diff = d.toD2 - d.toD1;
     return `You have ${d.toD1} days left until ${d[1]}, and ${d.toD2} days left until ${d[2]}. There are ${diff} days between them.`;
 }
-
-// feel free to plug these example dates into your functions
-const dateA = new Date(2022,09,26)
-const dateB = new Date(2022,11,25)
-
-console.log(comp1(dateA, dateB))
-console.log(comp2(dateA, dateB))
-console.log(tot(dateA, dateB))
